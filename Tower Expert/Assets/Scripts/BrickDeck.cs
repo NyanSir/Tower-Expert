@@ -13,5 +13,11 @@ public class BrickDeck : Deck {
 	void Update () {
 		
 	}
-	
+
+    public void Shuffle()
+    {
+
+    }
+
+
 }
