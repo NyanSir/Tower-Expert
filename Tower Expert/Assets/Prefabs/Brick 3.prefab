@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33100330398686184}
   - component: {fileID: 23336703903261426}
   - component: {fileID: 65026723985909200}
-  - component: {fileID: 114333335866572266}
   m_Layer: 0
   m_Name: Brick 3
   m_TagString: myCards
@@ -97,15 +96,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114333335866572266
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1934185941253990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84a1248febf39e84599033651ffc0aeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 1

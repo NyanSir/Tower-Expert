@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAction : MonoBehaviour {
     public BrickDeck brickDeck;
+    public Camera testCamera;
 	// Use this for initialization
 	void Start () {
 		
@@ -22,10 +23,10 @@ public class PlayerAction : MonoBehaviour {
     {
         RaycastHit brickHit;
         Ray customRay;
-        customRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        customRay = testCamera.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(customRay, out brickHit))
         {
-            if(brickHit.collider.gameObject != null)
+            if(brickHit.collider.gameObject != null && brickHit.collider.tag.Equals("Brick"))
             {
                 Debug.Log(brickHit.collider.name);
                 DrawBrick(brickHit.collider.gameObject);
