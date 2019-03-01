@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Brick
+<<<<<<< HEAD
   - myCards
+=======
+>>>>>>> 38157eabc4740891629638f9795c9f32663dee0e
   layers:
   - Default
   - TransparentFX
