@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridBoardManager : MonoBehaviour {
+public class GridBoardManager : Singleton<GridBoardManager> {
 
     public Brick[][] bricks;
 

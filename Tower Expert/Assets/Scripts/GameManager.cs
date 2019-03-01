@@ -6,14 +6,15 @@ using UnityEngine.UI;
 
 public enum GameState : int
 {
-    Initial= 0,
+    Initial = 0,
+    SelectBrick,
     Place,
     DrawBrick,
     DrawTask,
     End,
 }
 
-public class GameManager : MonoBehaviour {
+public class GameManager : Singleton<GameManager> {
     
     /// <summary>
     /// Singleton
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour {
 
     private TaskDeck taskDeck;
     private BrickDeck brickDeck;
+
+    public Brick selectedBrick;
 
     /// <summary>
     /// CurrentGameState for other script to call
