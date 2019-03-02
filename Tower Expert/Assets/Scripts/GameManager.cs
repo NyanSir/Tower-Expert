@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public enum GameState : int
 {
     Initial = 0,
-    SelectBrick,
-    Place,
+    SelectBrick = 1,
+    PlaceBrick,
     DrawBrick,
     DrawTask,
     End,
@@ -57,7 +57,12 @@ public class GameManager : Singleton<GameManager> {
                         ///Initial bricks and tasks     ---> Shuffle decks ---> deal bricks and taskcards
                         
                         break;
-                    case GameState.Place:
+                    case GameState.SelectBrick:
+                        //place                         ---> wait for click to place brick
+
+                        
+                        break;
+                    case GameState.PlaceBrick:
                         //place                         ---> wait for click to place brick
 
                         CurrentGameState = GameState.DrawBrick;     //after each placement player must draw one brick
