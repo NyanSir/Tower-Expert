@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: Intern-4
   m_EditorClassIdentifier: 
   cardType: 0
-  score: 0
-  colors: 
+  score: 3
+  colors: 010000000a00000001000000
   gridSize: 3
   cells:
-  - row: 000000
-  - row: 000000
-  - row: 000000
+  - row: 000100
+  - row: 000100000000
+  - row: 000100000000000000

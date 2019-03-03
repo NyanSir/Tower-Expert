@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 1
   score: 5
-  colors: 640000006400000001000000
+  colors: 01000000640000000a00000001000000
   gridSize: 3
   cells:
   - row: 000100
