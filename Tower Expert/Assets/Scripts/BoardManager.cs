@@ -108,7 +108,8 @@ public class BoardManager : Singleton<BoardManager>
     private void OnFull()
     {
         //End the game
-
+        //Calculate the points and display it
+        //display game ends
     }
 
     public Brick GetBrickAt(int r, int c)

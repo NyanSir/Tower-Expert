@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : Singleton<PlayerManager> {
 
@@ -9,7 +10,7 @@ public class PlayerManager : Singleton<PlayerManager> {
     public int score = 0;
 
     public GameObject playerHand;
-
+    public Text scoreUI;
     [SerializeField] private Transform[] brickPositions;
 
     [SerializeField] private int maxHandSize;
@@ -19,13 +20,12 @@ public class PlayerManager : Singleton<PlayerManager> {
 	void Start () {
 		for (int i = 0; i < 3; i++) {
             DrawBrick(brickPositions[i].position);
-        }
+        }      
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		
 	}
 
     public void DrawBrick(Vector3 position) {
@@ -51,6 +51,7 @@ public class PlayerManager : Singleton<PlayerManager> {
 
         //Scoring
         score += task.taskData.score;
+        scoreUI.text = score + "";
     }
 
 }
