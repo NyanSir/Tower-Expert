@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class PlayerManager : Singleton<PlayerManager> {
 
     public List<Brick> bricksInHand;
@@ -14,29 +15,17 @@ public class PlayerManager : Singleton<PlayerManager> {
 
     [SerializeField] private int maxHandSize;
     private int taskCount;
-    private int previousScore;
+
 	// Use this for initialization
 	void Start () {
 		for (int i = 0; i < 3; i++) {
             DrawBrick(brickPositions[i].position);
-        }
-        previousScore = score;
-        scoreUI.text = score.ToString();
+        }      
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if(previousScore != score)
-        {
-            scoreUI.text = score.ToString();
-            previousScore = score;
-        }
-        //Test Score Update
-        //if (Input.GetKeyDown(KeyCode.W))
-        //{
-        //    score++;
-        //}
 	}
 
     public void DrawBrick(Vector3 position) {
@@ -62,6 +51,7 @@ public class PlayerManager : Singleton<PlayerManager> {
 
         //Scoring
         score += task.taskData.score;
+        scoreUI.text = score + "";
     }
 
 }
