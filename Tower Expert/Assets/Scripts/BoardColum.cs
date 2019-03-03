@@ -10,7 +10,7 @@ public class BoardColum : MonoBehaviour {
     public Brick[] bricks;
     public int brickCount = 0;
 
-    [SerializeField] private float brickHeight;
+    private float brickHeight;
 
     // Use this for initialization
     void Start () {

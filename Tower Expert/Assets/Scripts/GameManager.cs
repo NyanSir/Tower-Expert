@@ -61,7 +61,7 @@ public class GameManager : Singleton<GameManager> {
                         break;
                     case GameState.DrawBrick:
                         //draw a brick after each placement
-                        PlayerManager.Instance.DrawBrick();
+                        PlayerManager.Instance.DrawBrick(selectedBrick.transform.position);
                         break;
                     case GameState.DrawTask:
                         //if the player didn't continously draw taskcard, go ahead

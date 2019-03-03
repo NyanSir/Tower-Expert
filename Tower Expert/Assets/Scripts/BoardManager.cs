@@ -35,6 +35,8 @@ public class BoardManager : Singleton<BoardManager>
     {
         if (!colum.isFull)
         {
+            PlayerManager.Instance.UseBrick(brick);
+            PlayerManager.Instance.DrawBrick(brick.transform.position);
             colum.PlaceBrick(brick);
 
             row = colum.brickCount - 1;

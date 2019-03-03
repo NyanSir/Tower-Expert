@@ -33,14 +33,13 @@ public class Brick : MonoBehaviour {
         }
     }
 
-    void OnMouseEnter() {
-        transform.localScale = Vector3.one * 2.0f;
-    }
+    //void OnMouseEnter() {
+    //    transform.localScale = Vector3.one * 2.0f;
+    //}
 
-    void OnMouseExit()
-    {
-        transform.localScale = Vector3.one;
-    }
+    //void OnMouseExit() {
+    //    transform.localScale = Vector3.one;
+    //}
 
     public void OnPlaced() {
         //Maybe some visual effects when placed

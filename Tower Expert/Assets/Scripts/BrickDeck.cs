@@ -8,17 +8,31 @@ public class BrickDeck : Singleton<BrickDeck>
 
     public Material[] Materials;
     public List<Brick> bricks;
+    public GameObject[] brickPrefabs;
 
     private int YellowBrickNum = 10;
     private int BlueBrickNum = 10;
     private int RedBrickNum = 10;
     private int TotalNum;
 
-    public Brick OnDraw()
+    public Brick OnDraw(Vector3 position)
     {
-        int index = Random.Range(0, TotalNum);
+        int index = Random.Range(0, bricks.Count);
         Brick brick = bricks[index];
         bricks.RemoveAt(index);
+
+        switch (brick.color) {
+            case BrickColor.Red:
+                GameObject.Instantiate(brickPrefabs[0], position, Quaternion.identity);
+                break;
+            case BrickColor.Yellow:
+                GameObject.Instantiate(brickPrefabs[1], position, Quaternion.identity);
+                break;
+            case BrickColor.Blue:
+                GameObject.Instantiate(brickPrefabs[2], position, Quaternion.identity);
+                break;
+        }
+
         return brick;
     }
 

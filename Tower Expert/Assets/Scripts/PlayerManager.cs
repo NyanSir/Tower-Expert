@@ -22,8 +22,12 @@ public class PlayerManager : Singleton<PlayerManager> {
 		
 	}
 
-    public void DrawBrick() {
-        bricksInHand.Add(BrickDeck.Instance.OnDraw());
+    public void DrawBrick(Vector3 position) {
+        bricksInHand.Add(BrickDeck.Instance.OnDraw(position));
+    }
+
+    public void UseBrick(Brick usedBrick) {
+        bricksInHand.Remove(usedBrick);
     }
 
     public void DrawTaskCard() {
