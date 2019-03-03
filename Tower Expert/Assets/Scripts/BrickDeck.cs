@@ -23,13 +23,13 @@ public class BrickDeck : Singleton<BrickDeck>
 
         switch (brick.color) {
             case BrickColor.Red:
-                GameObject.Instantiate(brickPrefabs[0], position, Quaternion.identity);
+                GameObject.Instantiate(brickPrefabs[0], position, Quaternion.identity).transform.parent = PlayerManager.Instance.playerHand.transform;
                 break;
             case BrickColor.Yellow:
-                GameObject.Instantiate(brickPrefabs[1], position, Quaternion.identity);
+                GameObject.Instantiate(brickPrefabs[1], position, Quaternion.identity).transform.parent = PlayerManager.Instance.playerHand.transform;
                 break;
             case BrickColor.Blue:
-                GameObject.Instantiate(brickPrefabs[2], position, Quaternion.identity);
+                GameObject.Instantiate(brickPrefabs[2], position, Quaternion.identity).transform.parent = PlayerManager.Instance.playerHand.transform;
                 break;
         }
 

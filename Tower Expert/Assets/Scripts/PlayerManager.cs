@@ -8,12 +8,18 @@ public class PlayerManager : Singleton<PlayerManager> {
     public List<TaskCard> tasksInHand;
     public int score = 0;
 
+    public GameObject playerHand;
+
+    [SerializeField] private Transform[] brickPositions;
+
     [SerializeField] private int maxHandSize;
     private int taskCount;
 
 	// Use this for initialization
 	void Start () {
-		
+		for (int i = 0; i < 3; i++) {
+            DrawBrick(brickPositions[i].position);
+        }
 	}
 	
 	// Update is called once per frame
