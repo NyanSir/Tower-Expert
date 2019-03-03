@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deck : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+public class Deck : Singleton<Deck> {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -16,11 +15,6 @@ public class Deck : MonoBehaviour {
 
 	// Shuffle the deck
 	public virtual void Shuffle() {
-
-	}
-
-	// When someone draw a card
-	public virtual void OnDraw() {
 
 	}
 	

@@ -6,28 +6,22 @@ using UnityEngine.UI;
 
 public enum GameState : int
 {
-    Initial = 0,
-    SelectBrick,
-    Place,
+    Initial = 1,
+    Idle,
+    BrickSelected,
     DrawBrick,
     DrawTask,
     End,
 }
 
-public class GameManager : Singleton<GameManager> {
-    
-    /// <summary>
-    /// Singleton
-    /// </summary>
-    public static GameManager Instance = null;
+public class GameManager : Singleton<GameManager> { 
 
-    private GameState currentGameState;
+    [SerializeField] private GameState currentGameState;
     private bool ContinousDrawTask = true;
 
-    private TaskDeck taskDeck;
-    private BrickDeck brickDeck;
-
     public Brick selectedBrick;
+
+    
 
     /// <summary>
     /// CurrentGameState for other script to call
@@ -39,7 +33,7 @@ public class GameManager : Singleton<GameManager> {
             return currentGameState;
         }
 
-        private set
+        set
         {
             if (value == currentGameState)
             {
@@ -55,28 +49,34 @@ public class GameManager : Singleton<GameManager> {
                 {
                     case GameState.Initial:
                         ///Initial bricks and tasks     ---> Shuffle decks ---> deal bricks and taskcards
-                        
+                        BrickDeck.Instance.InitDeck();
+                        TaskDeck.Instance.InitDeck();
+                        CurrentGameState = GameState.Idle;
                         break;
-                    case GameState.Place:
-                        //place                         ---> wait for click to place brick
+                    case GameState.Idle:
 
-                        CurrentGameState = GameState.DrawBrick;     //after each placement player must draw one brick
+                        break;
+                    case GameState.BrickSelected:
+                        //place                         ---> wait for click to place brick            
                         break;
                     case GameState.DrawBrick:
                         //draw a brick after each placement
+                        PlayerManager.Instance.DrawBrick();
                         break;
                     case GameState.DrawTask:
                         //if the player didn't continously draw taskcard, go ahead
                         if(ContinousDrawTask == true)
                         {
                             //draw a task
-
+                            PlayerManager.Instance.DrawTaskCard();
                             ContinousDrawTask = false;
                         }
                         break;
                     case GameState.End:
                         //check task finish status
                         //check the tower is full
+                        CheckTaskCompletion();
+                        ContinousDrawTask = true;
                         break;
                 }
             }
@@ -84,19 +84,7 @@ public class GameManager : Singleton<GameManager> {
     }
     void Start()
     {
-    }
-
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
+        CurrentGameState = GameState.Initial;
     }
 
     void Update()
@@ -110,6 +98,38 @@ public class GameManager : Singleton<GameManager> {
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    private void CheckTaskCompletion() {
+        foreach (TaskCard task in PlayerManager.Instance.tasksInHand) {
+            List<BrickMatrix> matrices = BoardManager.Instance.GetBrickMatrices(task);
+
+            foreach (BrickMatrix matrix in matrices) {
+                int result = 0;
+                bool[,] cells = new bool[3, 3];
+
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        cells[i, 2 - j] = task.taskData.GetCells()[i, j];
+                    }
+                }
+
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        if (cells[i, j]) {
+                            result += (int)matrix.bricks[i, j];
+                        }
+                    }
+                }
+
+                //If value is equal, complete this TASK
+                if (result == task.GetColorValue()) {
+                    PlayerManager.Instance.CompleteTask(task);
+                }
+            }
+        }
     }
 
 }
