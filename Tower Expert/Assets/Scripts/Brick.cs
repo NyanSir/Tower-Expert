@@ -6,47 +6,24 @@ public enum BrickColor
 {
     Red = 1,
     Yellow = 10,
-    Blue = 100
+    Blue = 100,
+    Error = 0
 }
 
 public class Brick : MonoBehaviour {
-
     public BrickColor color;
    
     private bool isZoomIn;
-    public int[][] place;
+    //public int[][] place;
 
-    public void OnPlaced() {
-        
-    }
-
-    void Start()
+    public Brick(int colorIndex)
     {
-        
-        this.transform.localScale = Vector3.one;
-        
-    }
-
-    void Update()
-    {
-
-    }
-	void OnMouseEnter()
-    {
-        transform.localScale =Vector3.one*2.0f;
-    }
-    void OnMouseExit()
-    {
-        //Debug.Log(1);
-        transform.localScale = Vector3.one;
-    }
-    public void SetColor(int colorIndex)
-    {
-        if(colorIndex == 0)
+        if (colorIndex == 0)
         {
             color = BrickColor.Blue;
 
-        }else if(colorIndex == 1)
+        }
+        else if (colorIndex == 1)
         {
             color = BrickColor.Red;
         }
@@ -55,6 +32,19 @@ public class Brick : MonoBehaviour {
             color = BrickColor.Yellow;
         }
     }
-   
+
+    void OnMouseEnter() {
+        transform.localScale = Vector3.one * 2.0f;
+    }
+
+    void OnMouseExit()
+    {
+        transform.localScale = Vector3.one;
+    }
+
+    public void OnPlaced() {
+        //Maybe some visual effects when placed
+        GetComponent<Collider>().enabled = false;
+    }
 
 }

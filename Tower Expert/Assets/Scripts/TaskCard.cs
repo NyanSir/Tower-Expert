@@ -10,9 +10,14 @@ public enum TaskType {
 public class TaskCard : MonoBehaviour {
 
     public CardData taskData;
-
+    public TaskType taskType;
+    
     public bool isCompleted = false;
-
+    public TaskCard(CardData data)
+    {
+        taskData = data;
+    }
+    
     // Use this for initialization
     void Start () {
 		
