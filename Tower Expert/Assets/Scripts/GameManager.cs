@@ -69,7 +69,7 @@ public class GameManager : Singleton<GameManager> {
                         {
                             //draw a task
                             PlayerManager.Instance.DrawTaskCard();
-                            ContinousDrawTask = false;
+                            ContinousDrawTask = true;
                         }
                         break;
                     case GameState.End:
