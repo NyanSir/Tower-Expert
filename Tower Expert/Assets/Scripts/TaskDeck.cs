@@ -46,6 +46,7 @@ public class TaskDeck : Singleton<TaskDeck> {
         int index = Random.Range(0, TotalNum);
         TaskCard task = tasks[index];
         tasks.RemoveAt(index);
+        TotalNum--;
         return task;
     }
 
