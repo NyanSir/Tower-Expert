@@ -31,8 +31,8 @@ public class BoardColum : MonoBehaviour {
         //Visual effect of BRICK placement
         brick.transform.position = transform.position + new Vector3(0, brickHeight * brickCount, 0);
         brick.OnPlaced();
-        
-        if (++brickCount >= BoardManager.Instance.maxBrickPerColum) {
+        ++brickCount;
+        if (brickCount >= BoardManager.Instance.maxBrickPerColum) {
             isFull = true;
         }
     }

@@ -31,21 +31,26 @@ public class InputManager : Singleton<InputManager>
                     {
                         if (GameManager.Instance.CurrentGameState == GameState.Idle)
                         {
-                            Debug.Log("Hit a BRICK: " + hitInfo.collider.gameObject.name);
-
                             GameManager.Instance.CurrentGameState = GameState.BrickSelected;
                             GameManager.Instance.selectedBrick = hitInfo.collider.GetComponent<Brick>();
+                            GameManager.Instance.selectedBrick.transform.position += Vector3.up * 0.5f;
+                        }
+                        else if (GameManager.Instance.CurrentGameState == GameState.BrickSelected)
+                        {
+                            GameManager.Instance.selectedBrick.transform.position -= Vector3.up * 0.5f;
+                            GameManager.Instance.selectedBrick = hitInfo.collider.GetComponent<Brick>();
+                            GameManager.Instance.selectedBrick.transform.position += Vector3.up * 0.5f;
                         }
                     }
 
                     //When click on a TASK CARD
-                    if (hitInfo.collider.gameObject.tag == "Task")
+                    else if (hitInfo.collider.gameObject.tag == "Task")
                     {
 
                     }
 
                     //When click on the BOARD
-                    if (hitInfo.collider.gameObject.tag == "Board")
+                    else if (hitInfo.collider.gameObject.tag == "Board")
                     {
                         if (GameManager.Instance.CurrentGameState == GameState.BrickSelected)
                         {
@@ -63,13 +68,13 @@ public class InputManager : Singleton<InputManager>
                     }
 
                     //When click on the DECK OF BRICK
-                    if (hitInfo.collider.gameObject.tag == "BrickDeck")
+                    else if (hitInfo.collider.gameObject.tag == "BrickDeck")
                     {
                         //Nothing happened
                     }
 
                     //When click on the DECK OF TASK
-                    if (hitInfo.collider.gameObject.tag == "TaskDeck")
+                    else if (hitInfo.collider.gameObject.tag == "TaskDeck")
                     {
                         if (GameManager.Instance.CurrentGameState == GameState.Idle)
                         {
@@ -79,8 +84,23 @@ public class InputManager : Singleton<InputManager>
                         }
                     }
 
+                    else
+                    {
+                        if (GameManager.Instance.CurrentGameState == GameState.BrickSelected)
+                        {
+                            GameManager.Instance.selectedBrick.transform.position -= Vector3.up * 0.5f;
+                            GameManager.Instance.CurrentGameState = GameState.Idle;
+                        }
+                    }
                 }
-
+            }
+            else
+            {
+                if (GameManager.Instance.CurrentGameState == GameState.BrickSelected)
+                {
+                    GameManager.Instance.selectedBrick.transform.position -= Vector3.up * 0.5f;
+                    GameManager.Instance.CurrentGameState = GameState.Idle;
+                }
             }
         }
 

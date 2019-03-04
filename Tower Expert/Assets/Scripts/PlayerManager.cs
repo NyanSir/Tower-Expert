@@ -14,16 +14,13 @@ public class PlayerManager : Singleton<PlayerManager> {
 
     public GameObject playerHand;
     public Text scoreUI;
-    [SerializeField] private Transform[] brickPositions;
+    public Transform[] brickPositions;
 
     [SerializeField] private int maxHandSize;
     private int taskCount;
 
 	// Use this for initialization
 	void Start () {
-		for (int i = 0; i < 3; i++) {
-            DrawBrick(brickPositions[i].position);
-        }
         for (int i = 0; i < 3; i++)
         {
             UItaskInHand[i] = null;
@@ -57,27 +54,37 @@ public class PlayerManager : Singleton<PlayerManager> {
         taskCount++;
     }
 
-    public void CompleteTask(TaskCard task) {
-        tasksInHand.Remove(task);
-        taskCount--;
+    public void CompleteTask(List<int> index) {
+        foreach (int i in index)
+        {
+            //Scoring
+            score += tasksInHand[i].taskData.score;
+            scoreUI.text = score + "";
 
-        //Scoring
-        score += task.taskData.score;
-        scoreUI.text = score + "";
+            tasksInHand.RemoveAt(i);
+            taskCount--;
+        }
+
+        UIUpdateHand();
     }
     public void UIUpdateHand()
     {       
-        for(int n = 0; n < 3; ++n)
+        for(int n = 0; n < 3; n++)
         {
-            if(UItaskInHand[n] != null)
+            if (UItaskInHand[n] != null)
+            {
                 Destroy(UItaskInHand[n]);
+                UItaskInHand[n] = null;
+            }
         }
         Transform cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
         int i = 0;
         foreach(TaskCard t in tasksInHand)
         {
             taskcard.GetComponent<TaskCardGenerator>().Data = t.taskData;
-            UItaskInHand[i] = Instantiate(taskcard, taskPos[i].transform.position, taskPos[i].transform.rotation, taskPos[i].transform);
+            UItaskInHand[i] = Instantiate(taskcard, taskPos[i].transform);
+            UItaskInHand[i].transform.position = taskPos[i].transform.position;
+            UItaskInHand[i].transform.rotation = taskPos[i].transform.rotation;
             i++;
         }
     }

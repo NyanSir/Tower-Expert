@@ -7,7 +7,8 @@ public enum BrickColor
     Red = 1,
     Yellow = 10,
     Blue = 100,
-    Error = 0
+    Error = 0,
+    Empty = -1
 }
 
 public class Brick : MonoBehaviour {

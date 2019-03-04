@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44670212, g: 0.49655777, b: 0.5748935, a: 1}
+  m_IndirectSpecularColor: {r: 0.44670165, g: 0.49655688, b: 0.5748925, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1329,9 +1329,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardColums:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1586124505}
+  - {fileID: 567853739}
+  - {fileID: 628026925}
   maxBrickPerColum: 8
   brickHeight: 1
 --- !u!114 &1442261849

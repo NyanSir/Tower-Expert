@@ -21,6 +21,11 @@ public class BrickDeck : Singleton<BrickDeck>
         Brick brick = bricks[index];
         bricks.RemoveAt(index);
 
+        if (GameManager.Instance.CurrentGameState != GameState.Initial)
+        {
+            position -= Vector3.up * 0.5f;
+        }
+
         switch (brick.color) {
             case BrickColor.Red:
                 GameObject.Instantiate(brickPrefabs[0], position, transform.rotation).transform.parent = PlayerManager.Instance.playerHand.transform;

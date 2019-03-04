@@ -19,6 +19,7 @@ public class TaskCardGenerator : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Data.colors.Sort();
         propBlock = new MaterialPropertyBlock();
 
         tiles = new MeshRenderer[3, 3];
@@ -61,17 +62,17 @@ public class TaskCardGenerator : MonoBehaviour
         switch (Data.colors.Count)
         {
             case 2:
-                requirements[0].transform.position = new Vector3(requirements[0].transform.position.x,
-                    (requirements[0].transform.position.y + requirements[2].transform.position.y) / 2.0f,
-                    requirements[0].transform.position.z);
-                requirements[1].transform.position = new Vector3(requirements[1].transform.position.x,
-                    (requirements[1].transform.position.y + requirements[3].transform.position.y) / 2.0f,
-                    requirements[1].transform.position.z);
+                requirements[0].transform.localPosition = new Vector3(requirements[0].transform.localPosition.x,
+                    (requirements[0].transform.localPosition.y + requirements[2].transform.localPosition.y) / 2.0f,
+                    requirements[0].transform.localPosition.z);
+                requirements[1].transform.localPosition = new Vector3(requirements[1].transform.localPosition.x,
+                    (requirements[1].transform.localPosition.y + requirements[3].transform.localPosition.y) / 2.0f,
+                    requirements[1].transform.localPosition.z);
                 break;
             case 3:
-                requirements[2].transform.position = new Vector3((requirements[0].transform.position.x + requirements[1].transform.position.x) / 2.0f,
-                    requirements[2].transform.position.y,
-                    requirements[2].transform.position.z);
+                requirements[2].transform.localPosition = new Vector3((requirements[0].transform.localPosition.x + requirements[1].transform.localPosition.x) / 2.0f,
+                    requirements[2].transform.localPosition.y,
+                    requirements[2].transform.localPosition.z);
                 break;
 
         }

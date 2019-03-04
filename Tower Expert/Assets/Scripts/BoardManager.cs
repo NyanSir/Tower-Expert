@@ -67,7 +67,7 @@ public class BoardManager : Singleton<BoardManager>
         {
             for (int j = 0; j < 3; j++)
             {
-                cells[i, 2 - j] = task.taskData.GetCells()[i, j];
+                cells[2 - i, j] = task.taskData.GetCells()[i, j];
             }
         }
 
@@ -82,28 +82,35 @@ public class BoardManager : Singleton<BoardManager>
                 {
                     int x = r - i;
                     int y = c - j;
+                    
+                    BrickMatrix m = new BrickMatrix();
+                    m.bricks = new BrickColor[3, 3];
 
                     for (int a = 0; a < 3; a++)
                     {
-                        for (int b = 0; b < 3; b++) {
+                        for (int b = 0; b < 3; b++)
+                        {
                             int p = x + a;
                             int q = y + b;
-                            BrickMatrix m = new BrickMatrix();
-                            m.bricks = new BrickColor[3, 3];
-                            if (p < 0 || p > 2 || q < 0 || q >= maxBrickPerColum) {                               
-                                m.bricks[a, b] = BrickColor.Error;                                
-                            } else {
-                                Debug.Log("p = " + p + "; q = " + q);
-                                m.bricks[a, b] = GetBrickAt(p, q).color;
+                            Debug.Log("p = " + p + "\tq = " + q);
+                            if (q < 0 || q > 2 || p < 0 || p >= maxBrickPerColum)
+                            {
+                                m.bricks[a, b] = BrickColor.Error;
                             }
-                            matrices.Add(m);
+                            else
+                            {
+                                Brick brick = GetBrickAt(p, q);
+                                if (brick != null)
+                                    m.bricks[a, b] = brick.color;
+                                else
+                                    m.bricks[a, b] = BrickColor.Empty;
+                            }
                         }
                     }
-
+                    matrices.Add(m);
                 }
             }
         }
-
         return matrices;
     }
 
@@ -116,6 +123,10 @@ public class BoardManager : Singleton<BoardManager>
 
     public Brick GetBrickAt(int r, int c)
     {
+        if (c >= 3 || c < 0 || r < 0 || r >= boardColums[c].brickCount)
+        {
+            return null;
+        }
         return boardColums[c].bricks[r];
     }
 
