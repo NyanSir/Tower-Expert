@@ -89,9 +89,11 @@ public class BoardManager : Singleton<BoardManager>
                             int p = x + a;
                             int q = y + b;
                             BrickMatrix m = new BrickMatrix();
+                            m.bricks = new BrickColor[3, 3];
                             if (p < 0 || p > 2 || q < 0 || q >= maxBrickPerColum) {                               
                                 m.bricks[a, b] = BrickColor.Error;                                
                             } else {
+                                Debug.Log("p = " + p + "; q = " + q);
                                 m.bricks[a, b] = GetBrickAt(p, q).color;
                             }
                             matrices.Add(m);
