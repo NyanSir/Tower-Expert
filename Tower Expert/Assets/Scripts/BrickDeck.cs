@@ -26,17 +26,20 @@ public class BrickDeck : Singleton<BrickDeck>
             position -= Vector3.up * 0.5f;
         }
 
-        switch (brick.color) {
-            case BrickColor.Red:
-                GameObject.Instantiate(brickPrefabs[0], position, transform.rotation).transform.parent = PlayerManager.Instance.playerHand.transform;
-                break;
-            case BrickColor.Yellow:
-                GameObject.Instantiate(brickPrefabs[1], position, transform.rotation).transform.parent = PlayerManager.Instance.playerHand.transform;
-                break;
-            case BrickColor.Blue:
-                GameObject.Instantiate(brickPrefabs[2], position, transform.rotation).transform.parent = PlayerManager.Instance.playerHand.transform;
-                break;
-        }
+        //switch (brick.color) {
+        //    case BrickColor.Red:
+        //        GameObject.Instantiate(brickPrefabs[0], position, transform.rotation).transform.parent = PlayerManager.Instance.playerHand.transform;
+        //        break;
+        //    case BrickColor.Yellow:
+        //        GameObject.Instantiate(brickPrefabs[1], position, transform.rotation).transform.parent = PlayerManager.Instance.playerHand.transform;
+        //        break;
+        //    case BrickColor.Blue:
+        //        GameObject.Instantiate(brickPrefabs[2], position, transform.rotation).transform.parent = PlayerManager.Instance.playerHand.transform;
+        //        break;
+        //}
+
+        brick.transform.position = position;
+        brick.transform.parent = PlayerManager.Instance.playerHand.transform;
 
         return brick;
     }
@@ -46,15 +49,21 @@ public class BrickDeck : Singleton<BrickDeck>
         TotalNum = YellowBrickNum + RedBrickNum + RedBrickNum;
         for (int i = 0; i < YellowBrickNum; i++)
         {
-            bricks.Add(new Brick(2));
+            Brick brick = GameObject.Instantiate(brickPrefabs[1], Vector3.forward * 100, transform.rotation).GetComponent<Brick>();
+            bricks.Add(brick);
+            brick.SetBrickColor(2);
         }
         for (int i = 0; i < BlueBrickNum; i++)
         {
-            bricks.Add(new Brick(0));
+            Brick brick = GameObject.Instantiate(brickPrefabs[2], Vector3.forward * 100, transform.rotation).GetComponent<Brick>();
+            bricks.Add(brick);
+            brick.SetBrickColor(0);
         }
         for (int i = 0; i < RedBrickNum; i++)
         {
-            bricks.Add(new Brick(1));
+            Brick brick = GameObject.Instantiate(brickPrefabs[0], Vector3.forward * 100, transform.rotation).GetComponent<Brick>();
+            bricks.Add(brick);
+            brick.SetBrickColor(1);
         }
 
     }

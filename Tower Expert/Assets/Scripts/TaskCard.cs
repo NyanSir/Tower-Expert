@@ -6,8 +6,8 @@ public enum TaskType {
     Intern,
     Senior
 }
-
-public class TaskCard : MonoBehaviour {
+[System.Serializable]
+public class TaskCard {
 
     public CardData taskData;
     public TaskType taskType;
@@ -17,16 +17,7 @@ public class TaskCard : MonoBehaviour {
     {
         taskData = data;
     }
-    
-    // Use this for initialization
-    void Start () {
-		
-	}
 
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public int GetColorValue() {
         int colorValue = 0;

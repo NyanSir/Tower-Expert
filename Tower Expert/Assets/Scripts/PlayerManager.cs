@@ -25,6 +25,7 @@ public class PlayerManager : Singleton<PlayerManager> {
         {
             UItaskInHand[i] = null;
         }
+        tasksInHand = new List<TaskCard>();
     }
 	
 	// Update is called once per frame

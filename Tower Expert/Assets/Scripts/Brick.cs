@@ -17,7 +17,7 @@ public class Brick : MonoBehaviour {
     private bool isZoomIn;
     //public int[][] place;
 
-    public Brick(int colorIndex)
+    public void SetBrickColor(int colorIndex)
     {
         if (colorIndex == 0)
         {
