@@ -1172,6 +1172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1270016881}
   - component: {fileID: 1115733068}
+  - component: {fileID: 1115733065}
   m_Layer: 0
   m_Name: Pos2
   m_TagString: Untagged
@@ -1179,6 +1180,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1115733065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1115733064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22a6b7d8ccc72548b8fae013db24113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &1115733068
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1283,6 +1295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 142236659}
   - component: {fileID: 1356083267}
+  - component: {fileID: 1356083264}
   m_Layer: 0
   m_Name: Pos1
   m_TagString: Untagged
@@ -1290,6 +1303,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1356083264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1356083263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22a6b7d8ccc72548b8fae013db24113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &1356083267
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1565,6 +1589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2015341701}
   - component: {fileID: 1648943071}
+  - component: {fileID: 1648943068}
   m_Layer: 0
   m_Name: Pos3
   m_TagString: Untagged
@@ -1572,6 +1597,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1648943068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1648943067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f22a6b7d8ccc72548b8fae013db24113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &1648943071
 MeshFilter:
   m_ObjectHideFlags: 0
